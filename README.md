@@ -33,3 +33,4 @@ To run the Gradio UI for user-friendly image generation:
 python scripts/gradio_app.py
 ```
 [Run in Google Colab](https://colab.research.google.com/drive/1jW6JpdIwCN5Jf7dTLK3w14mjLXhnlJ9D?usp=sharing)
+[Live Gradio Demo](https://colab.research.google.com/drive/1jW6JpdIwCN5Jf7dTLK3w14mjLXhnlJ9D?usp=sharing)
