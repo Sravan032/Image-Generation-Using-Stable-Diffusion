@@ -1,30 +1,12 @@
-
-# Install Dependencies
-!pip install diffusers transformers accelerate safetensors
-
-from diffusers import StableDiffusionPipeline
 import torch
-from google.colab import files
+from diffusers import StableDiffusionPipeline
 
-# Load Stable Diffusion Model
+# Load the Stable Diffusion model (v1.5)
 model_id = "runwayml/stable-diffusion-v1-5"
 pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
-pipe.to("cuda")
+pipe = pipe.to("cuda")
 
-# Generate Multiple Images
-prompts = [
-    "A futuristic cyberpunk city at night with neon lights",
-    "A scenic mountain landscape with a clear blue sky",
-    "A magical forest with glowing mushrooms and fairies"
-]
-
-images = []
-for i, prompt in enumerate(prompts):
+# Define the image generation function
+def generate_image(prompt):
     image = pipe(prompt).images[0]
-    image.save(f"generated_image_{i+1}.png")
-    images.append(image)
-
-# Display and Save the Images
-for i, image in enumerate(images):
-    image.show()
-    files.download(f"generated_image_{i+1}.png")
+    return image
